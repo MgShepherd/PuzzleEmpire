@@ -1,7 +1,9 @@
-import './App.css';
-
 const App = (): JSX.Element => {
-  return <div>Puzzle Empire</div>;
+  return (
+    <div className="flex justify-center items-center h-screen w-screen">
+      Puzzle Empire
+    </div>
+  );
 };
 
 export default App;
