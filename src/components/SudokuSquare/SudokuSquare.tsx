@@ -1,9 +1,15 @@
+import SudokuElement from '../../types/SudokuElement';
+
 interface SudokuSquareProps {
-  value: number;
+  element: SudokuElement;
 }
 
-const SudokuSquare = ({ value }: SudokuSquareProps): JSX.Element => {
-  return <div>{value !== 0 ? value : ''}</div>;
+const SudokuSquare = ({ element }: SudokuSquareProps): JSX.Element => {
+  return (
+    <div data-testid="sudokuSquare">
+      {element.value !== 0 ? element.value : ''}
+    </div>
+  );
 };
 
 export default SudokuSquare;
