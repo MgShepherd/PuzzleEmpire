@@ -10,7 +10,7 @@ const SudokuSquare = ({ element }: SudokuSquareProps): JSX.Element => {
       data-testid="sudokuSquare"
       className="w-full h-full ring-black ring-1 flex justify-center items-center"
     >
-      {element.value !== 0 ? element.value : ''}
+      {element.value !== '0' ? element.value : ''}
     </div>
   );
 };
