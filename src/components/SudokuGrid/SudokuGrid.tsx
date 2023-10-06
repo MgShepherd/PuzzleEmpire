@@ -1,19 +1,9 @@
 import SudokuBlock from '../SudokuBlock/SudokuBlock';
-import { useEffect, useState } from 'react';
-import SudokuElement, {
-  convertStringToElements,
-} from '../../types/SudokuElement';
+import SudokuElement from '../../types/SudokuElement';
+import { useAppSelector } from '../../redux/reduxHooks';
 
-interface SudokuGridProps {
-  elementString: string;
-}
-
-const SudokuGrid = ({ elementString }: SudokuGridProps): JSX.Element => {
-  const [elements, setElements] = useState<SudokuElement[][]>([]);
-
-  useEffect(() => {
-    setElements(convertStringToElements(elementString));
-  }, [elementString]);
+const SudokuGrid = (): JSX.Element => {
+  const { elements } = useAppSelector((state) => state.sudoku);
 
   return (
     <div

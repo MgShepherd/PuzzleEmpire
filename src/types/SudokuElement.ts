@@ -19,3 +19,9 @@ export const convertStringToElements = (
   }
   return elements;
 };
+
+export const createEmptyGrid = (): SudokuElement[][] => {
+  return convertStringToElements(
+    '000000000,000000000,000000000,000000000,000000000,000000000,000000000,000000000,000000000'
+  );
+};
