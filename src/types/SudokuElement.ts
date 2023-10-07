@@ -1,5 +1,6 @@
 export default interface SudokuElement {
   value: string;
+  selected: boolean;
 }
 
 export const convertStringToElements = (
@@ -13,6 +14,7 @@ export const convertStringToElements = (
       values.map((value) => {
         return {
           value,
+          selected: false,
         };
       })
     );

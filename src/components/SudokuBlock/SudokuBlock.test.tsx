@@ -7,15 +7,15 @@ describe('Sudoku Block tests', () => {
 
   beforeEach(() => {
     elements = [
-      { value: '1' },
-      { value: '1' },
-      { value: '1' },
-      { value: '2' },
-      { value: '2' },
-      { value: '0' },
-      { value: '0' },
-      { value: '0' },
-      { value: '3' },
+      { value: '1', selected: false },
+      { value: '1', selected: false },
+      { value: '1', selected: false },
+      { value: '2', selected: false },
+      { value: '2', selected: false },
+      { value: '0', selected: false },
+      { value: '0', selected: false },
+      { value: '0', selected: false },
+      { value: '3', selected: false },
     ];
     render(<SudokuBlock elements={elements} />);
   });
