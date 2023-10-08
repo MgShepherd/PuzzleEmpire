@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import SudokuElement, {
+  convertStringToElements,
   createEmptyGrid,
   SudokuIndex,
 } from '../types/SudokuElement';
@@ -24,6 +25,9 @@ export const sudokuSlice = createSlice({
   name: 'Sudoku',
   initialState,
   reducers: {
+    setupGrid: (state, action: PayloadAction<string>) => {
+      state.elements = convertStringToElements(action.payload);
+    },
     selectSquare: (state, action: PayloadAction<SudokuIndex>) => {
       clearAllSelections(state.elements);
       state.elements[action.payload.blockIndex][
@@ -33,6 +37,6 @@ export const sudokuSlice = createSlice({
   },
 });
 
-export const { selectSquare } = sudokuSlice.actions;
+export const { selectSquare, setupGrid } = sudokuSlice.actions;
 
 export default sudokuSlice.reducer;

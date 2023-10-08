@@ -1,10 +1,10 @@
 import { screen } from '@testing-library/react';
 import { renderWithProvider } from '../../redux/testUtils';
-import SudokuGrid from '../SudokuGrid/SudokuGrid';
+import SudokuBlock from './SudokuBlock';
 
 describe('Sudoku Block tests', () => {
-  it('should render sudoku squares', () => {
-    renderWithProvider(<SudokuGrid />);
+  it('should render the correct valued sudoku squares', () => {
+    renderWithProvider(<SudokuBlock blockIndex={0} />);
     expect(screen.getAllByTestId('sudokuSquare')).toBeDefined();
   });
 });

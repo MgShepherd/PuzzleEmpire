@@ -1,9 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit';
 import { render } from '@testing-library/react';
-import sudokuReducer from './sudokuSlice';
 import { Provider } from 'react-redux';
+import { setupStore, AppStore } from './store';
 
-export const renderWithProvider = (uiElement: JSX.Element): void => {
-  const store = configureStore({ reducer: { sudoku: sudokuReducer } });
+export const renderWithProvider = (
+  uiElement: JSX.Element,
+  store: AppStore = setupStore()
+): void => {
   render(<Provider store={store}>{uiElement}</Provider>);
 };
