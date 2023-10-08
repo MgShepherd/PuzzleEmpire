@@ -3,6 +3,11 @@ export default interface SudokuElement {
   selected: boolean;
 }
 
+export interface SudokuIndex {
+  blockIndex: number;
+  squareIndex: number;
+}
+
 export const convertStringToElements = (
   inputStr: string
 ): SudokuElement[][] => {

@@ -10,8 +10,8 @@ const SudokuGrid = (): JSX.Element => {
       data-testid="sudokuGrid"
       className="w-full h-full ring-4 ring-black grid grid-cols-3 grid-rows-3"
     >
-      {elements.map((blockElements: SudokuElement[], index: number) => {
-        return <SudokuBlock key={index} elements={blockElements} />;
+      {elements.map((_: SudokuElement[], index: number) => {
+        return <SudokuBlock key={index} blockIndex={index} />;
       })}
     </div>
   );
