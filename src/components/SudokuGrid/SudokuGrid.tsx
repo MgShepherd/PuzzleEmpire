@@ -12,9 +12,21 @@ const SudokuGrid = ({ elementString }: SudokuGridProps): JSX.Element => {
   const { elements } = useAppSelector((state) => state.sudoku);
   const dispatch = useAppDispatch();
 
+  const handleKeyDown = (event: KeyboardEvent): void => {
+    console.log(event.key);
+  };
+
   useEffect(() => {
     dispatch(setupGrid(elementString));
   }, [elementString, dispatch]);
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
 
   return (
     <div
