@@ -14,7 +14,7 @@ const SudokuBlock = ({ blockIndex }: SudokuBlockProps): JSX.Element => {
       data-testid="sudokuBlock"
       className="grid grid-cols-3 w-full h-full grid-rows-3 ring-2 ring-black"
     >
-      {elements.map((_: SudokuElement[], index: number) => {
+      {elements.map((_: SudokuElement, index: number) => {
         return (
           <SudokuSquare
             key={index}
