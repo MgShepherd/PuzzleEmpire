@@ -34,9 +34,17 @@ export const sudokuSlice = createSlice({
         action.payload.squareIndex
       ].selected = true;
     },
+    updateSelectedValue: (state, action: PayloadAction<string>) => {
+      state.elements.forEach((block) => {
+        block.forEach((element) => {
+          if (element.selected) element.value = action.payload;
+        });
+      });
+    },
   },
 });
 
-export const { selectSquare, setupGrid } = sudokuSlice.actions;
+export const { selectSquare, setupGrid, updateSelectedValue } =
+  sudokuSlice.actions;
 
 export default sudokuSlice.reducer;

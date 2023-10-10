@@ -3,6 +3,7 @@ import SudokuElement from '../../types/SudokuElement';
 import { useAppDispatch, useAppSelector } from '../../redux/reduxHooks';
 import { useEffect } from 'react';
 import { setupGrid } from '../../redux/sudokuSlice';
+import handleKeyPress from '../../utils/KeyboardManager';
 
 interface SudokuGridProps {
   elementString: string;
@@ -12,21 +13,19 @@ const SudokuGrid = ({ elementString }: SudokuGridProps): JSX.Element => {
   const { elements } = useAppSelector((state) => state.sudoku);
   const dispatch = useAppDispatch();
 
-  const handleKeyDown = (event: KeyboardEvent): void => {
-    console.log(event.key);
-  };
-
   useEffect(() => {
     dispatch(setupGrid(elementString));
   }, [elementString, dispatch]);
 
   useEffect(() => {
-    document.addEventListener('keydown', handleKeyDown);
+    const keyPressHandler = (event: KeyboardEvent): void =>
+      handleKeyPress(event, dispatch);
+    document.addEventListener('keydown', keyPressHandler);
 
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('keydown', keyPressHandler);
     };
-  }, []);
+  }, [dispatch]);
 
   return (
     <div
