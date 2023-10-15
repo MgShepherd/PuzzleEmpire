@@ -1,11 +1,26 @@
 import { AppDispatch } from '../redux/store';
 import { updateSelectedValue } from '../redux/sudokuSlice';
 
-const handleKeyPress = (event: KeyboardEvent, dispatch: AppDispatch): void => {
+let cmdKeyPressed = false;
+
+export const handleKeyPress = (
+  event: KeyboardEvent,
+  dispatch: AppDispatch
+): void => {
   if (!isNaN(parseInt(event.key))) {
     dispatch(updateSelectedValue(event.key));
   }
-  console.log(event.key);
+  if (event.key === 'Control' || event.key === 'Meta') {
+    cmdKeyPressed = true;
+  }
 };
 
-export default handleKeyPress;
+export const handleKeyUp = (event: KeyboardEvent): void => {
+  if (event.key === 'Control' || event.key === 'Meta') {
+    cmdKeyPressed = false;
+  }
+};
+
+export const isCommandKeyPressed = (): boolean => {
+  return cmdKeyPressed;
+};

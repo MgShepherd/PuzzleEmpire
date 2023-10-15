@@ -4,6 +4,7 @@ import SudokuElement, {
   createEmptyGrid,
   SudokuIndex,
 } from '../types/SudokuElement';
+import { isCommandKeyPressed } from '../utils/KeyboardManager';
 
 export interface SudokuState {
   elements: SudokuElement[][];
@@ -29,7 +30,9 @@ export const sudokuSlice = createSlice({
       state.elements = convertStringToElements(action.payload);
     },
     selectSquare: (state, action: PayloadAction<SudokuIndex>) => {
-      clearAllSelections(state.elements);
+      if (!isCommandKeyPressed()) {
+        clearAllSelections(state.elements);
+      }
       state.elements[action.payload.blockIndex][
         action.payload.squareIndex
       ].selected = true;
